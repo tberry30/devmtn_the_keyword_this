@@ -39,6 +39,19 @@ user.getUsername();
 
 // Write the function definitions which will make the following function invocations function properly.
 
+var Car = function Car(make, model, year) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
+  this.move = 0;
+  
+  this.moveCar = function() {
+    this.move += 10;
+    return this.move;
+  };
+};
+
+
 var prius = new Car('Toyota', 'Prius', 2011);
 var mustang = new Car('Ford', 'Mustang', 2013);
 
@@ -58,12 +71,10 @@ var getYear = function(){
 
 //Above you're given the getYear function. Using your prius and mustang objects from above, use the proper syntax that will allow for you to call the getYear function with the prius then the mustang objects being the focal objects. *Don't add getYear as a property on both objects*.
 
-  //Code Here
-
+console.log(getYear.call(prius));
 
 
 //New Problem
-
 
 
 var user = {
@@ -80,10 +91,12 @@ setTimeout(getUsername, 5000);
 
 //Above you're given an object, a function, and a setTimeout invocation. After 5 seconds, what will the getUsername function return?
 
-  //Answer Here
+  //undefined
 
 //In the example above, what is the 'this keyword' bound to when getUsername runs?
 
-  //Answer Here
+  //window
 
 //Fix the setTimeout invocation so that the user object will be the focal object when getUsername is ran.
+
+setTimeout(getUsername.call(user), 5000);
